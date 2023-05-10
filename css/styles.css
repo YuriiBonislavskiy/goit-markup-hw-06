@@ -11,7 +11,7 @@
   --icon-dark: #FFFFFF1A;
   --project-item-color: #EEEEEE;
   --anime-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --anime-time: 1000ms;
+  --anime-time: 250ms;
   --scale-min: 0.5;
   --modal-height: 581px;
   --modal-width: 528px;
@@ -414,6 +414,12 @@ footer {
   display: flex;
   align-items: center;
   padding: 10px 28px;
+  transition: box-shadow var(--anime-time) var(--anime-function);
+}
+
+.sent-buttom:hover,
+.sent-buttom:focus {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
 .sent-buttom-icon {
@@ -1167,6 +1173,7 @@ footer {
   margin-top: 30px;
   padding: 10px 52px;
   box-shadow: none;
+  transition: ox-shadow var(--anime-time) var(--anime-function);
 }
 
 .main-form-buttom:hover,
