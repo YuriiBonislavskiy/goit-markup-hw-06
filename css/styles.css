@@ -1043,6 +1043,7 @@ footer {
   line-height: 1.167;
   letter-spacing: 0.01em;
   color: var(--menu-item-color);
+    outline: none;
   /* text-align: left; */
 }
 
@@ -1074,36 +1075,24 @@ footer {
   transition: border-color var(--anime-time) var(--anime-function);
 }
 
-/* .modal-form:focus-within input,
-.modal-form:focus-within textarea {
-  border-color: var(--select-color);
-  cursor: pointer;
-  outline: none;
-} */
 
-:is(.modal-form-item:hover) .modal-form-icon {
+.modal-form-item:is(:hover) .modal-form-icon,
+.modal-form-field:is(:focus)+.modal-form-icon {
   fill: var(--select-color);
   cursor: pointer;
-}
+} 
 
-:is(.modal-form-item:hover) .modal-form-field {
+.modal-form-item:is(:hover) .modal-form-field,
+.modal-form-field:is(:focus) {
   border-color: var(--select-color);
-  cursor: pointer;
-}
-
-.modal-form-field:focus {
-  border-color: var(--select-color);
-  outline: none;
-}
-
-:is(.modal-form-field:focus)+.modal-form-icon {
-  fill: var(--select-color);
+    cursor: pointer;
 }
 
 .modal-form-icon {
   transition: fill var(--anime-time) var(--anime-function);
 }
 
+/*    Чек-бокс ВАРІАНТ 1 */
 
 .modal-form-checkbox-box {
   position: relative;
@@ -1124,9 +1113,6 @@ footer {
   clip: rect(0 0 0 0);
   overflow: hidden;
   opacity: 0;
-  /* transform: translateY(4px);
-  z-index: -1;
-  height: 12px;*/
 }
 
 .modal-form-checkbox-icon {
@@ -1135,15 +1121,9 @@ footer {
   width: 16px;
   height: 15px;
   border: 1px solid var(--menu-item-color);
-  border-radius: 15%;
-  /* padding: -1px; */
-  /* stroke: var(--menu-item-color);*/
-  /* stroke-width: 4px;  */
-  /* box-sizing: content-box; */
-  /* stroke-linecap: round; */
-  /* stroke-linejoin: round; */
-  /* stroke-miterlimit: var(--select-color); */
+  border-radius: 2px;
   fill: var(--base-color2);
+  background-color: var(--base-color2);
   transform: translateY(3px);
   transition: border var(--anime-time) var(--anime-function), fill var(--anime-time) var(--anime-function), stroke var(--anime-time) var(--anime-function);
 }
@@ -1156,37 +1136,80 @@ footer {
   letter-spacing: 0.03em;
 }
 
-:is(.modal-form-checkbox:checked)+.modal-form-checkbox-icon {
-  border: none;
-  fill: var(--select-color);
-  box-sizing: content-box;
+.modal-form-checkbox:checked+.modal-form-checkbox-icon {
+  background-color: var(--select-color);
+  fill: var(--base-color2);
+  border-color: var(--select-color);
+  stroke: var(--select-color);
+   }
+
+.modal-form-checkbox:is(:not(:checked))+.modal-form-checkbox-icon:hover,
+ .modal-form-checkbox:is(:focus):is(:not(:checked))+.modal-form-checkbox-icon {
+  border-color: var(--select-color);
+  background-color: var(--base-color2);
+  /* background-color: rgba(33, 149, 243, 0.522); */
+  stroke: var(--select-color);
 }
 
-.modal-form-checkbox:focus+.modal-form-checkbox-icon {
+.modal-form-checkbox:is(:checked)+.modal-form-checkbox-icon:hover,
+.modal-form-checkbox:is(:focus):is(:checked)+.modal-form-checkbox-icon {
+  border-color: var(--select-color);
+  /* background-color: var(--base-color2); */
+  background-color: rgba(33, 149, 243, 0.522);
+  stroke: var(--select-color);
+  stroke-width: 2px;
+}
+
+/*    Чек-бокс ВАРІАНТ 2 */
+
+.modal-form-checkbox-2 {
+  position: absolute;
+  left: 0px;
+  top: 22px;
+  /* margin-bottom: 30px; */
+  display: flex;
+  align-items: center;
+}
+
+.modal-form-checkbox-2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  opacity: 0;
+}
+
+.modal-form-checkbox-icon-2 {
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 15px;
+  left: 0px;
+    top: 22px;
+  border: 1px solid var(--menu-item-color);
+  border-radius: 2px;
+  fill: var(--base-color2);
+  background-color: var(--base-color2);
+  transform: translateY(3px);
+  transition: border var(--anime-time) var(--anime-function), fill var(--anime-time) var(--anime-function), stroke var(--anime-time) var(--anime-function);
+}
+
+.modal-form-checkbox-2:checked+.modal-form-checkbox-icon-2 {
+  background-color: var(--select-color);
+  fill: var(--select-color);
+  border-color: var(--select-color);
+  
+}
+.modal-form-checkbox-2:focus+.modal-form-checkbox-icon-2,
+.modal-form-checkbox-icon-2:hover {
   border-color: var(--select-color);
 }
 
-:is(.modal-form-checkbox:checked)+.modal-form-checkbox-icon:hover {
-  border: none;
-  fill: var(--select-color);
-  box-sizing: content-box;
-}
-
-:is(.modal-form-checkbox:checked)+.modal-form-checkbox-icon:focus {
-  border: none;
-  fill: var(--select-color);
-  box-sizing: content-box;
-}
-
-:is(.modal-form-checkbox:checked)+.modal-form-checkbox-icon {
-  border: none;
-  fill: var(--select-color);
-  box-sizing: content-box;
-}
-
-.modal-form-checkbox-icon:hover {
-  border-color: var(--select-color);
-}
+/* Кінець ВАРІАНТ 2 */
 
 .contract {
   color: var(--select-color);
